@@ -8,7 +8,9 @@ import './css/bootstrap.min.css';
 import './css/style.css';
 import './fonts/lightcase.eot';
 
-import './js/jquery.js'
+import jquery from 'jquery';
+window.jQuery, global.jQuery = $;
+//import './js/jquery.js'
 import './js/bootstrap.min.js';
 import './js/wow.min.js'
 import './js/functions.js';
