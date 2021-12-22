@@ -37,6 +37,14 @@ homepage:
             type: slug
             uses: title
             group: Meta
+        titre_produit:
+            type: text
+            group: "Produits"
+        description_produit:
+            type: redactor
+        thumbs_image:
+            type: image
+            
         seo:
             type: seo
             group: "SEO settings"
@@ -87,6 +95,19 @@ pages:
     records_per_page: 5
     order: id
 
+# Agricultural products
+agricproducts:
+    name: AgricProducts
+    singular_name: AgricProduct
+    fields:
+        title: 
+            type: text
+        description:
+            type: text
+        image:
+            type: image
+        slug:
+            type: slug
 
 # Entries can be used for things like 'news' or 'blogpostings'. They have a
 # 'teaser', which can be used for a short blurb on listing-pages, allowing
