@@ -14,6 +14,8 @@ config/extensions/*_local.yaml
 !/public/thumbs/index.html
 ###< bolt/core ###
 
+config/bolt/menu.yaml
+
 ### NPM and frontend assets building cruft
 node_modules/
 npm-debug.log
