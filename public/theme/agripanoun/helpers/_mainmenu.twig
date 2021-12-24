@@ -1,0 +1,62 @@
+{% macro display_menu_item(item, loop) %}
+
+    {% if item.submenu %}
+        {% set class = 'navbar-link' %}
+        <div class="navbar-item has-dropdown is-hoverable">
+    {% else %}
+        {% set class = 'navbar-item' %}
+    {% endif %}
+
+    <a href='{{ item.link }}' {% if item.title is defined %}title='{{ item.title|escape }}'{% endif %}
+       class='{{ class }} {% if item|current %}current {% endif %}{% if item.class is defined %}{{item.class}}{% endif %} index-{{ loop.index }}{% if loop.first %} first{% endif %}{% if loop.last %} last{% endif %}'>
+        {{ item.label|default(item.title) }}
+    </a>
+
+    {% if item.submenu %}
+        <div class="navbar-dropdown">
+            {% for submenu in item.submenu %}
+                {{ _self.display_menu_item(submenu, loop) }}
+            {% endfor %}
+        </div>
+
+        </div>
+    {% endif %}
+
+{% endmacro %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="primary-menu">
+        <div class="logo">
+            <a href="{{ path('homepage') }}"><img src="assets/images/logo/01.png" alt="logo"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="icofont-navigation-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="main-area">
+                <div class="main-menu">
+                    <ul class="agri-ul">
+                        {% for item in menu %}
+                            <li class="{% if canonical() is same as(item.link) %} active {% endif %}" >
+                                <a href="{{ item.link }}" >{{ item.label }}</a>
+                                {% if item.submenu %}
+                                    <ul class="agri-ul">
+                                        {% for submenu in item.submenu %}
+                                            <li><a href="{{ submenu.link }}">{{ submenu.label }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="header-btn">
+                    <a href="#" class="lab-btn"><span>Get in Touch</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+ {{ app.request.attributes.get('_route') }}
