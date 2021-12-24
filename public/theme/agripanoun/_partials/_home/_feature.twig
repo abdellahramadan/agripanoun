@@ -1,0 +1,35 @@
+{% setcontent agricproducts = "agricproducts" %}
+<!-- Feature Secton Start Here -->
+<section class="feature-section padding-tb">
+    <div class="shape-feature d-none d-xl-block">
+        {% for thumb in homepage.thumbs_images %}
+            <img src="{{ thumb }}" alt="feature-thumb" class="shape-{{ loop.index }}">
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="section-header wow fadeInUp" data-wow-delay="0.3s">
+            <h3>{{ homepage.titre_produit }}</h3>
+            <p>{{ homepage.description_produit }}</p>
+        </div>
+        <div class="section-wrapper">
+            <div class="row">
+                {% for agricproduct in agricproducts %}
+                    <div class="col-xl-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="feature-item">
+                            <div class="feature-inner">
+                                <div class="feature-thumb">
+                                    <img src="{{ agricproduct.image }}" alt="{{ agricproduct.title }}">
+                                </div>
+                                <div class="feature-content">
+                                    <a href="#"><h5>{{ agricproduct.title }}</h5></a>
+                                    <p>{{ agricproduct.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Feature Secton ending Here -->
