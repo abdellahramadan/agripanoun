@@ -120,6 +120,7 @@ pages:
 agricproducts:
     name: AgricProducts
     singular_name: AgricProduct
+    viewless: true
     fields:
         title: 
             type: text
@@ -130,6 +131,18 @@ agricproducts:
         slug:
             type: slug
 
+# Service 
+Services:
+    name: Services
+    singular_name: Service
+    fields:
+        title: 
+            type: text
+        content:
+            type: redactor
+        image:
+            type: image
+            
 # About page
 Apropos:
     name: Apropos
